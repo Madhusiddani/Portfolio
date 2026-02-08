@@ -103,16 +103,16 @@
 
   /* ============ GLASS BUTTON ============ */
   .glass-button {
-    @apply px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg font-medium transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:shadow-lg;
+    @apply px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg font-medium transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:shadow-glow-sm;
   }
 
   .glass-button-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-blue-500/30 to-primary/30 backdrop-blur-lg border border-blue-400/30 rounded-lg font-medium transition-all duration-300 hover:from-blue-500/40 hover:to-primary/40 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20;
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500/30 to-primary/30 backdrop-blur-lg border border-blue-400/30 rounded-lg font-medium transition-all duration-300 hover:from-blue-500/40 hover:to-primary/40 hover:border-blue-400/50 hover:shadow-glow-md;
   }
 
   /* ============ NAVIGATION LINK ============ */
   .nav-link {
-    @apply text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide relative;
+    @apply text-slate-400 hover:text-blue-accent transition-all duration-200 text-sm font-medium tracking-wide relative;
   }
 
   .nav-link::after {
@@ -120,9 +120,17 @@
     @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-primary rounded-full transition-all duration-300 group-hover:w-full;
   }
 
+  .nav-link:hover {
+    @apply text-blue-accent shadow-glow-sm rounded-md px-2;
+  }
+
+  .nav-link.active {
+    @apply text-blue-accent shadow-glow-md rounded-md px-2;
+  }
+
   /* ============ PRIMARY BUTTON ============ */
   .btn-primary {
-    @apply px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-all duration-300 border border-white/10 hover:border-white/30 backdrop-blur-sm;
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500/80 to-primary/80 hover:from-blue-500/90 hover:to-primary/90 text-white rounded-lg font-medium transition-all duration-300 border border-blue-400/30 hover:border-blue-400/60 hover:shadow-glow-md;
   }
 
   /* ============ SECTION TITLE ============ */
@@ -132,7 +140,7 @@
 
   .section-title::after {
     content: '';
-    @apply block w-1/2 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mt-4 rounded-full;
+    @apply block w-1/2 h-1 bg-gradient-to-r from-blue-500 via-blue-accent to-primary mx-auto mt-4 rounded-full shadow-glow-sm;
   }
 
   /* ============ GLASS INPUT ============ */
@@ -150,6 +158,39 @@
 
   .glass-textarea:focus {
     @apply outline-none bg-white/10 border-blue-400/50 shadow-lg shadow-blue-500/10;
+  }
+
+  /* ============ BLUE GLOW SYSTEM ============ */
+  .glow-blue-sm {
+    @apply shadow-glow-sm;
+  }
+
+  .glow-blue-md {
+    @apply shadow-glow-md;
+  }
+
+  .glow-blue-lg {
+    @apply shadow-glow-lg;
+  }
+
+  /* Animated glow pulse */
+  .glow-pulse {
+    @apply animate-pulse-glow;
+  }
+
+  /* Blue glow border */
+  .border-glow-blue {
+    @apply border border-blue-400/50 shadow-glow-sm rounded-lg;
+  }
+
+  /* Link with glow on hover */
+  .link-glow {
+    @apply text-primary hover:text-blue-accent transition-all duration-300 hover:shadow-glow-sm;
+  }
+
+  /* Button with blue glow */
+  .btn-glow {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500 to-primary text-white rounded-lg font-medium transition-all duration-300 hover:shadow-glow-lg hover:scale-105 active:scale-95;
   }
 }
 

@@ -1,10 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-// Left empty or removed
-// User didn't strictly say NO other libs, but keeping it simple with framer-motion is safer or I can just use a simple CSS animation or basic interval.
-// Let's use a simple currentRole index state with AnimatePresence for the "moving text".
-
 import { useState, useEffect } from 'react';
+import { useReducedMotionSafe } from '../hooks';
+import { slideInLeft, scaleIn } from '../variants';
 
 const Hero = () => {
     const roles = [
@@ -15,6 +13,7 @@ const Hero = () => {
     ];
 
     const [index, setIndex] = useState(0);
+    const prefersReducedMotion = useReducedMotionSafe();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -33,9 +32,9 @@ const Hero = () => {
 
                 {/* Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial="initial"
+                    animate="animate"
+                    variants={prefersReducedMotion ? { initial: {}, animate: {} } : slideInLeft}
                     className="order-2 md:order-1 glass-card p-8 md:p-12 glass-hover-lift"
                 >
                     <span className="text-primary font-medium tracking-wider mb-2 block">Hello, I'm</span>
@@ -67,9 +66,10 @@ const Hero = () => {
 
                 {/* Image */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
+                    initial="initial"
+                    animate="animate"
+                    variants={prefersReducedMotion ? { initial: {}, animate: {} } : scaleIn}
+                    transition={{ ...scaleIn.transition, delay: 0.2 }}
                     className="order-1 md:order-2 flex justify-center relative"
                 >
                     <div className="relative w-72 h-72 md:w-96 md:h-96">

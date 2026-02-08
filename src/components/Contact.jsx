@@ -2,11 +2,15 @@ import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import { FaPaperPlane, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { useScrollAnimation, useReducedMotionSafe } from '../hooks';
+import { scaleIn, headerReveal } from '../variants';
 
 const Contact = () => {
     const form = useRef();
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
+    const [submitStatus, setSubmitStatus] = useState(null);
+    const { ref: sectionRef, isInView: sectionInView } = useScrollAnimation();
+    const prefersReducedMotion = useReducedMotionSafe();
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -48,10 +52,10 @@ const Contact = () => {
 
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
+                    ref={sectionRef}
+                    initial="initial"
+                    animate={sectionInView ? "animate" : "initial"}
+                    variants={prefersReducedMotion ? { initial: {}, animate: {} } : scaleIn}
                     className="max-w-3xl mx-auto glass-dense p-8 md:p-12 glass-noise glass-hover-lift"
                 >
                     <h2 className="section-title text-center mb-8">Keep in Touch</h2>

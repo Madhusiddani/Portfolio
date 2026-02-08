@@ -1,17 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useScrollAnimation, useReducedMotionSafe } from '../hooks';
+import { fadeUp, staggerContainer, headerReveal } from '../variants';
 
 const About = () => {
+    const { ref: sectionRef, isInView: sectionInView } = useScrollAnimation();
+    const prefersReducedMotion = useReducedMotionSafe();
     return (
         <section id="about" className="py-20 bg-navy-900/50 glass-section relative">
             <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -z-10 opacity-50"></div>
             
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
+                    ref={sectionRef}
+                    initial="initial"
+                    animate={sectionInView ? "animate" : "initial"}
+                    variants={prefersReducedMotion ? { initial: {}, animate: {} } : fadeUp}
                     className="max-w-4xl mx-auto text-center"
                 >
                     <h2 className="section-title">About Me</h2>

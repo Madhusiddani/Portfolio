@@ -2,8 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { useScrollAnimation, useReducedMotionSafe } from '../hooks';
+import { 
+  staggerContainer, 
+  staggerItem, 
+  headerReveal, 
+  hoverLift 
+} from '../variants';
 
 const Projects = () => {
+    const { ref: sectionRef, isInView: sectionInView } = useScrollAnimation();
+    const prefersReducedMotion = useReducedMotionSafe();
     return (
         <section id="projects" className="py-20 bg-navy-900/50 glass-section relative">
             <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[80px] -z-10 opacity-50"></div>
@@ -11,24 +20,26 @@ const Projects = () => {
             
             <div className="max-w-7xl mx-auto px-6">
                 <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
+                    ref={sectionRef}
+                    initial="initial"
+                    animate={sectionInView ? "animate" : "initial"}
+                    variants={prefersReducedMotion ? { initial: {}, animate: {} } : headerReveal}
                     className="section-title text-center"
                 >
                     Featured Projects
                 </motion.h2>
 
-                <div className="grid md:grid-cols-2 gap-8 mt-12">
+                <motion.div 
+                    className="grid md:grid-cols-2 gap-8 mt-12"
+                    variants={staggerContainer}
+                    initial="initial"
+                    animate={sectionInView ? "animate" : "initial"}
+                >
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.2 }}
-                            viewport={{ once: true }}
-                            whileHover={{ y: -10 }}
+                            variants={staggerItem}
+                            whileHover={prefersReducedMotion ? {} : { y: -10 }}
                             className="glass-dense p-8 group relative overflow-hidden glass-noise glass-hover-lift"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-xl -z-10"></div>
@@ -75,7 +86,7 @@ const Projects = () => {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
