@@ -42,8 +42,9 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-20 relative">
-            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-navy-900/50 -z-10"></div>
+        <section id="contact" className="py-20 relative glass-section">
+            <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] -z-10 opacity-50"></div>
+            <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -z-10"></div>
 
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
@@ -51,7 +52,7 @@ const Contact = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="max-w-3xl mx-auto glass-card p-8 md:p-12"
+                    className="max-w-3xl mx-auto glass-dense p-8 md:p-12 glass-noise glass-hover-lift"
                 >
                     <h2 className="section-title text-center mb-8">Keep in Touch</h2>
 
@@ -67,7 +68,7 @@ const Contact = () => {
                                     type="text"
                                     name="user_name"
                                     required
-                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                                    className="glass-input"
                                     placeholder="Your Name"
                                 />
                             </div>
@@ -77,7 +78,7 @@ const Contact = () => {
                                     type="email"
                                     name="user_email"
                                     required
-                                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all"
+                                    className="glass-input"
                                     placeholder="your.email@example.com"
                                 />
                             </div>
@@ -89,7 +90,7 @@ const Contact = () => {
                                 name="message"
                                 required
                                 rows="5"
-                                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all resize-none"
+                                className="glass-textarea"
                                 placeholder="Write your message here..."
                             ></textarea>
                         </div>
@@ -121,7 +122,7 @@ const Contact = () => {
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
-                                    className={`p-4 rounded-lg flex items-center gap-3 ${submitStatus === 'success'
+                                    className={`p-4 rounded-lg flex items-center gap-3 glass-card ${submitStatus === 'success'
                                         ? 'bg-green-500/20 text-green-300 border border-green-500/30'
                                         : 'bg-red-500/20 text-red-300 border border-red-500/30'
                                         }`}

@@ -27,29 +27,129 @@
 }
 
 @layer components {
+  /* ============ GLASS CARD VARIANTS ============ */
   .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl transition-all duration-300;
+    @apply relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl transition-all duration-300 overflow-hidden;
   }
 
+  .glass-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-xl -z-10;
+  }
+
+  /* Dense Glass - More opacity and blur */
+  .glass-dense {
+    @apply bg-white/10 backdrop-blur-2xl border border-white/20 rounded-xl shadow-2xl transition-all duration-300;
+  }
+
+  /* Light Glass - Less opacity for subtle look */
+  .glass-light {
+    @apply bg-white/5 backdrop-blur-md border border-white/5 rounded-xl transition-all duration-300;
+  }
+
+  /* Extra Strong Glass */
+  .glass-strong {
+    @apply bg-white/8 backdrop-blur-3xl border border-white/15 rounded-xl shadow-2xl transition-all duration-300;
+  }
+
+  /* Glass with Noise Texture */
+  .glass-noise {
+    @apply relative;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='300' height='300' fill='white' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+
+  /* ============ GLASS NAVIGATION ============ */
   .glass-nav {
-    @apply bg-navy-900/80 backdrop-blur-md border-b border-white/5;
+    @apply relative bg-navy-900/70 backdrop-blur-lg border-b border-white/10 shadow-2xl;
   }
 
+  .glass-nav::after {
+    content: '';
+    @apply absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent;
+  }
+
+  /* ============ GLASS HOVER EFFECTS ============ */
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-lg hover:backdrop-blur-2xl;
+  }
+
+  .glass-hover-lift {
+    @apply transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20;
+  }
+
+  /* ============ BORDER SHIMMER ============ */
+  .border-shimmer {
+    @apply relative border border-transparent bg-clip-padding;
+    background-image: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    background-size: 200% 200%;
+  }
+
+  .border-shimmer::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl bg-gradient-to-r from-white/0 via-white/10 to-white/0 blur-sm;
+  }
+
+  /* ============ GLASS SECTION CONTAINER ============ */
+  .glass-section {
+    @apply relative py-20 backdrop-blur-sm;
+  }
+
+  .glass-section::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  /* ============ GLASS BUTTON ============ */
+  .glass-button {
+    @apply px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg font-medium transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:shadow-lg;
+  }
+
+  .glass-button-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-blue-500/30 to-primary/30 backdrop-blur-lg border border-blue-400/30 rounded-lg font-medium transition-all duration-300 hover:from-blue-500/40 hover:to-primary/40 hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-500/20;
+  }
+
+  /* ============ NAVIGATION LINK ============ */
   .nav-link {
-    @apply text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide;
+    @apply text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide relative;
   }
 
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-primary rounded-full transition-all duration-300 group-hover:w-full;
+  }
+
+  /* ============ PRIMARY BUTTON ============ */
   .btn-primary {
     @apply px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-all duration-300 border border-white/10 hover:border-white/30 backdrop-blur-sm;
   }
 
+  /* ============ SECTION TITLE ============ */
   .section-title {
     @apply text-3xl md:text-4xl font-bold text-white mb-12 text-center relative inline-block;
   }
 
   .section-title::after {
     content: '';
-    @apply block w-1/2 h-1 bg-blue-500/50 mx-auto mt-4 rounded-full;
+    @apply block w-1/2 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent mx-auto mt-4 rounded-full;
+  }
+
+  /* ============ GLASS INPUT ============ */
+  .glass-input {
+    @apply w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-lg px-4 py-3 text-white placeholder-slate-500 transition-all duration-300;
+  }
+
+  .glass-input:focus {
+    @apply outline-none bg-white/10 border-blue-400/50 shadow-lg shadow-blue-500/10;
+  }
+
+  .glass-textarea {
+    @apply w-full bg-white/5 backdrop-blur-lg border border-white/10 rounded-lg px-4 py-3 text-white placeholder-slate-500 transition-all duration-300 resize-none;
+  }
+
+  .glass-textarea:focus {
+    @apply outline-none bg-white/10 border-blue-400/50 shadow-lg shadow-blue-500/10;
   }
 }
 

@@ -41,7 +41,7 @@ const Navbar = () => {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 border border-primary/50 text-primary hover:bg-primary/10 rounded-md transition-all text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2 glass-button border-blue-400/30 text-blue-300 hover:text-white"
           >
             <FaFilePdf size={14} />
             View Resume
@@ -64,7 +64,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-navy-900/95 backdrop-blur-xl border-t border-white/10 overflow-hidden"
+            className="md:hidden glass-nav border-t border-white/10 overflow-hidden"
           >
             <div className="flex flex-col items-center py-8 space-y-6">
               {navLinks.map((link) => (
@@ -81,7 +81,7 @@ const Navbar = () => {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-2 border border-primary text-primary hover:bg-primary/10 rounded-full transition-all"
+                className="flex items-center gap-2 px-6 py-2 glass-button-primary border-blue-400/50 text-blue-300 hover:text-white rounded-full transition-all"
                 onClick={() => setIsOpen(false)}
               >
                 <FaFilePdf />

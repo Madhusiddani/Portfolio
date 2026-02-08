@@ -5,7 +5,10 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-20 bg-navy-900/50">
+        <section id="projects" className="py-20 bg-navy-900/50 glass-section relative">
+            <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[80px] -z-10 opacity-50"></div>
+            <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/5 rounded-full blur-[100px] -z-10"></div>
+            
             <div className="max-w-7xl mx-auto px-6">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}
@@ -26,8 +29,9 @@ const Projects = () => {
                             transition={{ duration: 0.5, delay: index * 0.2 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -10 }}
-                            className="glass-card p-8 group relative overflow-hidden"
+                            className="glass-dense p-8 group relative overflow-hidden glass-noise glass-hover-lift"
                         >
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none rounded-xl -z-10"></div>
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[50px] -z-10 group-hover:bg-primary/20 transition-all duration-500"></div>
 
                             <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
@@ -42,7 +46,7 @@ const Projects = () => {
                                 {project.techStack.map((tech, idx) => (
                                     <span
                                         key={idx}
-                                        className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full border border-primary/20"
+                                        className="px-3 py-1 text-xs font-medium text-blue-300 bg-blue-500/20 border border-blue-400/30 rounded-full transition-all duration-300 hover:bg-blue-500/30 hover:border-blue-400/50"
                                     >
                                         {tech}
                                     </span>
@@ -54,7 +58,7 @@ const Projects = () => {
                                     href={project.githubLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+                                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
                                 >
                                     <FaGithub size={20} />
                                     <span>Code</span>
@@ -63,7 +67,7 @@ const Projects = () => {
                                     href={project.demoLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
+                                    className="flex items-center gap-2 text-slate-300 hover:text-blue-300 transition-colors"
                                 >
                                     <FaExternalLinkAlt size={16} />
                                     <span>Live Demo</span>

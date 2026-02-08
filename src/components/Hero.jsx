@@ -36,7 +36,7 @@ const Hero = () => {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="order-2 md:order-1"
+                    className="order-2 md:order-1 glass-card p-8 md:p-12 glass-hover-lift"
                 >
                     <span className="text-primary font-medium tracking-wider mb-2 block">Hello, I'm</span>
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
@@ -61,7 +61,7 @@ const Hero = () => {
 
                     <div className="flex flex-wrap gap-4">
                         <a href="#projects" className="btn-primary">View Projects</a>
-                        <a href="#contact" className="px-6 py-3 border border-white/10 text-white hover:bg-white/5 rounded-lg font-medium transition-all duration-300">Contact Me</a>
+                        <a href="#contact" className="px-6 py-3 border border-white/20 text-white hover:bg-white/10 hover:border-white/30 rounded-lg font-medium transition-all duration-300">Contact Me</a>
                     </div>
                 </motion.div>
 
@@ -77,10 +77,10 @@ const Hero = () => {
                         <img
                             src="/images/profile.jpg"
                             alt="Madhu Lavanya Siddani"
-                            className="relative w-full h-full object-cover rounded-full border-4 border-white/10 shadow-2xl z-10"
+                            className="relative w-full h-full object-cover rounded-full border-4 border-white/20 shadow-2xl z-10"
                         />
                         {/* Soft blue glow accent around photo */}
-                        <div className="absolute -inset-4 rounded-full border border-blue-500/20 z-0"></div>
+                        <div className="absolute -inset-4 rounded-full border border-blue-500/30 z-0 glass-light"></div>
                     </div>
                 </motion.div>
             </div>
