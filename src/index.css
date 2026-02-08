@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-900 text-slate-300 font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(30, 64, 175, 0.15) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(30, 64, 175, 0.15) 0%, transparent 25%);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl shadow-xl transition-all duration-300;
+  }
+
+  .glass-nav {
+    @apply bg-navy-900/80 backdrop-blur-md border-b border-white/5;
+  }
+
+  .nav-link {
+    @apply text-slate-400 hover:text-white transition-colors duration-200 text-sm font-medium tracking-wide;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-all duration-300 border border-white/10 hover:border-white/30 backdrop-blur-sm;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-white mb-12 text-center relative inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    @apply block w-1/2 h-1 bg-blue-500/50 mx-auto mt-4 rounded-full;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
